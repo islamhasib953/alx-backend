@@ -8,14 +8,6 @@ import csv
 from typing import List, Tuple
 
 
-def index_range(page: int, page_size: int) -> Tuple[int, int]:
-    """function return a tuple of size two containing a
-    start index and an end index of page"""
-    start_index = (page - 1) * page_size
-    end_index = page * page_size
-    return (start_index, end_index)
-
-
 class Server:
     """Server class to paginate a database of popular baby names."""
 
@@ -46,3 +38,11 @@ class Server:
         end_index = min(end_index, len(dataset))
 
         return dataset[start_index:end_index] if start_index < len(dataset) else []
+
+
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
+    """function return a tuple of size two containing a
+    start index and an end index of page"""
+    start_index = (page - 1) * page_size
+    end_index = page * page_size
+    return (start_index, end_index)
