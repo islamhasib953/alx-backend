@@ -9,14 +9,6 @@ from typing import List, Tuple, Dict, Any
 import math
 
 
-def index_range(page: int, page_size: int) -> Tuple[int, int]:
-    """function return a tuple of size two containing a
-    start index and an end index of page"""
-    start_index = (page - 1) * page_size
-    end_index = page * page_size
-    return (start_index, end_index)
-
-
 class Server:
     """Server class to paginate a database of popular baby names."""
 
@@ -59,3 +51,8 @@ class Server:
             "prev_page": page - 1 if page - 1 > 0 else None,
             "total_pages": total_page,
         }
+
+
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
+    """Returns a tuple containing a start and end index."""
+    return ((page - 1) * page_size, page * page_size)
