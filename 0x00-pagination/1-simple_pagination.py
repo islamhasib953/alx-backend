@@ -41,9 +41,8 @@ class Server:
             isinstance(page_size, int) and page_size > 0
         ), "Page size must be a positive integer."
 
-        start_index, end_index = index_range(page, page_size)
-
         dataset = self.dataset()
-        return (
-            self.__dataset[start_index:end_index] if start_index < len(dataset) else []
-        )
+        start_index, end_index = index_range(page, page_size)
+        end_index = min(end_index, len(dataset))
+
+        return dataset[start_index:end_index] if start_index < len(dataset) else []
