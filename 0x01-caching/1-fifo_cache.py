@@ -24,4 +24,4 @@ class FIFOCache(BaseCaching):
         """return the value"""
         if key is None or key not in self.cache_data.keys():
             return None
-        return "{}: {}".format(key, self.cache_data.get(key))
+        return self.cache_data.get(key)
