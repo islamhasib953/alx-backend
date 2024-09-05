@@ -1,31 +1,23 @@
-#!/usr/bin/env python3
-"""Small BaseCaching module
+#!/usr/bin/python3
+""" 0-basic_cache
 """
-
 from base_caching import BaseCaching
 
 
 class BasicCache(BaseCaching):
-    '''Caching system
-    '''
+    """Class BasicCache"""
 
     def __init__(self):
-        """ Initiliaze
-        """
-        BaseCaching.__init__(self)
+        """init class!"""
+        super().__init__()
 
     def put(self, key, item):
-        '''Add an item in the cache
-        '''
-        if key and item:
+        """assign to the dictionary"""
+        if key and item is not None:
             self.cache_data[key] = item
-        else:
-            pass
 
     def get(self, key):
-        '''Get an item by key
-        '''
-        if key in self.cache_data.keys():
-            return self.cache_data[key]
-        else:
+        """return the value"""
+        if key is None or key not in self.cache_data.keys():
             return None
+        return self.cache_data[key]
