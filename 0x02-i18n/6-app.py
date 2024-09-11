@@ -24,7 +24,7 @@ class Config:
     BABEl_DEFAULT_TIMEZONE = "UTC"
 
 
-app.config.from_object("6-app.Config")
+app.config.from_object("5-app.Config")
 
 
 @babel.localeselector
@@ -34,10 +34,7 @@ def get_locale() -> str:
     locale = request.args.get("locale")
     if locale and locale in app.config["LANGUAGES"]:
         return locale
-    elif g.user and g.user.get('locale') in app.config["LANGUAGES"]:
-        return g.user.get('locale')
-    else:
-        return request.accept_languages.best_match(app.config["LANGUAGES"])
+    return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
 @app.before_request
@@ -58,7 +55,7 @@ def get_user():
 @app.route("/")
 def hello_world() -> str:
     "return page hello world"
-    return render_template("6-index.html")
+    return render_template("5-index.html")
 
 
 if __name__ == "__main__":
